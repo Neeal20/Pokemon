@@ -15,5 +15,7 @@ router.get("/pokedex/:id", mainController.renderSinglePokemon);
 
 router.get("/login", mainController.loginPage);
 
+router.post("/login", mainController.loginPage);
+
 // Export du module router
 module.exports = router;

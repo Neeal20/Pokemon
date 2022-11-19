@@ -12,7 +12,6 @@ app.set("views", ("./views"));
 app.use(express.static("./public")); // Fichier accessible sans créer de route grâce au "public"
 app.use(express.urlencoded({ extended: true }));
 
-
 // Appel du routeur
 app.use(router);
 

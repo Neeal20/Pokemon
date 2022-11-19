@@ -11,6 +11,7 @@ const mainController = {
   renderPokedexPage: async (req,res,next) => {
     try {
       // On récupère le nombre de figurines par catéories
+      console.log(req.query);
       const listPokemons = await dataMapper.getAllPokemons();
       res.render("pokedex", { listPokemons });
     } catch (error) {
@@ -27,7 +28,24 @@ const mainController = {
     next();
   },
 
-  loginPage: (req,res,next) => {
+  loginPage: async (req,res,next) => {
+    try {
+      // On récupère le pseudo et le password du user
+      const usersPseudo = req.body.pseudo;
+      const usersPassword = req.body.password;
+
+      // Si l'identifiant est valide
+      if (usersPseudo && usersPassword) {
+        const postUser = await dataMapper.getLoginDatas(usersPseudo,usersPassword);
+        console.log(postUser);
+      } else {
+        // Si identifiants est mauvais
+        next();
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Désolé, une erreur s'est produite");
+    }
     res.render("login");
   }
 };

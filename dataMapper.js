@@ -25,6 +25,27 @@ const dataMapper = {
     // Sinon on renvoie null
       return null;
     }
+  },
+
+  getLoginDatas: async (usersPseudo, usersPassword) => {
+
+    const queryString = `
+    INSERT INTO "users"(
+      "pseudo",
+      "password"
+      )
+    VALUES ($1, $2)`;
+
+    const values = [usersPseudo, usersPassword];
+    const result = await client.query(queryString,values);
+    console.log("RESULTAT", result.rows);
+
+    if(result.rows.length === 1) {
+      const user = result.rows[0];
+      return user;
+    } else {
+      return null;
+    }
   }
 };
 
