@@ -1,7 +1,7 @@
 <%- include("partials/header") %>
 
 <section id="login__form">
-    <form action="/auth" method="POST">
+    <form action="/signin" method="POST">
         <div class="login__form">
             <div class="login__form--cart">
                 <h1 class="login__form--title">Login</h1>
@@ -9,9 +9,8 @@
                 <div class="login__form--input">
                     <input type="text" name="pseudo" placeholder="Mon pseudo">
                     <input type="text" name="password" placeholder="Password">
-                    <a id="login__form--forgot" href="">Mot de passe oublié ?</a>
-                    <a id="login__form--forgot" href="/signin">Vous n'avez pas de compte ?<br>Inscrivez vous ici <= </a>
-                    <input id="login__form--connection" type="submit" value="Se connecter">
+                    <input id="login__form--connection" type="submit" value="Inscription">
+                    <a id="login__form--forgot" href="/login">Vous avez déja un compte ? <br>Connectez vous ici <= </a>
                 </div>
             </div>
         </div>

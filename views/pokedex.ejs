@@ -5,7 +5,7 @@
         <% for( const pokemon of listPokemons ) { %>
             <div class="container__pokedex--form">
                 <h4 class="container__pokedex--title">#<%= pokemon.id %> <%= pokemon.name %></h4>
-                <img src="/img/<%= pokemon.id %>.png" alt="" class="container__pokedex--img">
+                <a href="/pokedex/<%= pokemon.id %>""><img src="/img/<%= pokemon.id %>.png" alt="<%= pokemon.name%>" class="container__pokedex--img"></a>
                 <a href="/pokedex/<%= pokemon.id %>"><h4 class="container__pokedex__details">Détail du pokémon +</h4></a>
                 <span class="container__pokedex--type"><%= pokemon.type[0]%></span>
             </div>

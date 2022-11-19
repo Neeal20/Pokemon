@@ -35,6 +35,7 @@ body {
     align-items: center;
     background-color: var(--color-third);
     width: 100%;
+    margin-left: 17rem;
 }
 
 .nav__bar--title {
@@ -78,6 +79,15 @@ body {
 
 .nav__bar--link:hover {
     color: var(--color-title);
+}
+
+.title {
+    right: 0;
+    color: var(--color-nav);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 14px;
 }
 
 /* ------------------------------- Home Page  */
@@ -166,6 +176,11 @@ main{
     width: 70%;
     padding-bottom: 3rem;
     padding-top: 1rem;
+    margin: auto;
+}
+
+a .container__pokedex--img {
+    display: block;
     margin: auto;
 }
 

@@ -1,5 +1,8 @@
 const client = require("./database");
 
+// Import du module bcrypt pour crypter les mdp
+const bcrypt = require("bcrypt");
+
 const dataMapper = {
   getAllPokemons: async () => {
     const result = await client.query("SELECT * FROM \"pokemons\" ORDER BY \"id\" ASC;");
@@ -27,7 +30,7 @@ const dataMapper = {
     }
   },
 
-  getLoginDatas: async (usersPseudo, usersPassword) => {
+  getSignInDatas: async (usersPseudo,usersPassword) => {
 
     const queryString = `
     INSERT INTO "users"(
@@ -36,9 +39,8 @@ const dataMapper = {
       )
     VALUES ($1, $2)`;
 
-    const values = [usersPseudo, usersPassword];
-    const result = await client.query(queryString,values);
-    console.log("RESULTAT", result.rows);
+    const values = [usersPseudo,usersPassword];
+    const result = (queryString, values);
 
     if(result.rows.length === 1) {
       const user = result.rows[0];
@@ -46,6 +48,24 @@ const dataMapper = {
     } else {
       return null;
     }
+  },
+
+  getLoginDatas : async (usersPseudo,usersPassword) => {
+    // const queryString = `
+    // SELECT * FROM "users"
+    // WHERE "pseudo" = $1 AND "password" = $2 IN
+    // VALUES ('$1'), ('$2')
+    // `;
+
+    const queryString = `SELECT * FROM "users" WHERE "pseudo" = '${usersPseudo}' AND "password" = '${usersPassword}' `;
+
+    const values = [ usersPseudo, usersPassword ];
+    const result = await client.query(queryString);
+
+    console.log(result.rows);
+
+    return result;
+
   }
 };
 
