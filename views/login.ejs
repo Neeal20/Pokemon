@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+
+<section id="login__form">
+    <form action="/login" method="POST">
+        <div class="login__form">
+            <div class="login__form--cart">
+                <h1 class="login__form--title">Login</h1>
+                <hr id="hr__login">
+                <div class="login__form--input">
+                    <input type="text" name="pseudo" placeholder="Mon pseudo">
+                    <input type="text" name="password" placeholder="Password">
+                    <a id="login__form--forgot" href="">Mot de passe oublié ?</a>
+                    <input id="login__form--connection" type="submit" value="Se connecter">
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<%- include("partials/footer") %>

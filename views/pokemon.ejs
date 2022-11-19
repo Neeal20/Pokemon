@@ -1,0 +1,41 @@
+<%- include("partials/header") %> 
+<section class="container__pokemon">
+    <div class="container__image">
+        <h1 class="container__image--title">#<%= singlePokemon.id %> <%= singlePokemon.name %></h1>
+        <img src="/img/<%= singlePokemon.id %>.png" alt="" class="container__pokemon--image">
+    </div>
+    <div class="container__right">
+        <h1 class="container__right--title">| Descriptions</h1>
+        <div class="container__pokemon--type">
+            <h4> > Type :</h4>
+            <h4><%= singlePokemon.type[0] %></h4>
+        </div>
+        <div class="container__pokemon--details">
+            <div class="container__pokemon--details left">
+                <ul class="container__pokemon--lists">
+                    <li class="container__pokemon--list">> HP</li>
+                    <li class="container__pokemon--list">> Attaque</li>
+                    <li class="container__pokemon--list">> Défense</li>
+                    <li class="container__pokemon--list">> Attaque spé</li>
+                    <li class="container__pokemon--list">> Défense spé</li>
+                    <li class="container__pokemon--list">> Vitesse</li>
+                </ul>
+            </div>
+            <div class="container__pokemon--details right">
+                <ul class="container__pokemon--lists">
+                    <li class="container__pokemon--list"><%= singlePokemon.pv %></li>
+                    <li class="container__pokemon--list"><%= singlePokemon.attaque %></li>
+                    <li class="container__pokemon--list"><%= singlePokemon.defense %></li>
+                    <li class="container__pokemon--list"><%= singlePokemon.attaque_spe %></li>
+                    <li class="container__pokemon--list"><%= singlePokemon.defense_spe %></li>
+                    <li class="container__pokemon--list"><%= singlePokemon.vitesse %></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container__pokemon--change">
+            <a href="/pokedex/<%= singlePokemon.id - 1 %>">Précédent</a><hr>
+            <a href="/pokedex/<%= singlePokemon.id + 1 %>">Suivant</a>
+        </div>
+    </div>
+</section>
+<%- include("partials/footer") %> 
