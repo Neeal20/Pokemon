@@ -1,8 +1,9 @@
 const express = require("express");
 const router = require("./router");
 const expressSession = require("express-session");
-const port = process.env.PORT || 8000;
+require("dotenv").config();
 const app = express();
+const port = process.env.PORT || 8000;
 
 
 // Configuration du moteur de template EJS
