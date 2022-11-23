@@ -1,5 +1,6 @@
 // On importe le dataMapper
 const dataMapper = require("../dataMapper");
+const { search } = require("../router");
 
 // Création d'un objet
 const mainController = {
@@ -61,7 +62,7 @@ const mainController = {
       // Si l'identifiant est valide
       if (usersPseudo && usersPassword) {
         const postUser = await dataMapper.getSignInDatas(usersPseudo,usersPassword);
-        console.log(postUser);
+        console.log("Inscription Valide : ",postUser);
       } else {
         // Si identifiants est mauvais
         next();
@@ -78,7 +79,6 @@ const mainController = {
     try {
       const usersPseudo = req.body.pseudo;
       const getUser = await dataMapper.getLoginDatas(usersPseudo,usersPassword);
-      console.log(getUser);
       if (getUser) {
         console.log("Réussis + :",getUser);
         req.session.loggedin = true;
@@ -96,11 +96,37 @@ const mainController = {
   getPseudoSession: (req,res,next) => {
     try {
       const pseudo = req.session.pseudo;
-      console.log(pseudo);
       res.locals.name = pseudo;
       next();
     } catch (error) {
       res.status(500).send("Désolé, une erreur s'est produite");
+    }
+  },
+
+  searchPokemonByName: async (req,res,next) => {
+    const searchPokemon = req.query.name;
+
+    try {
+      // Récupère notre méthode dataMapper pour trouver afficher les pokémons via leurs noms
+      const pokemonName = await dataMapper.getPokemonBySearch(searchPokemon);
+      // On envois nos data à notre vue
+      res.render("pokemonSearchName", { pokemonName });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(`An error occured with the database :\n${error.message}`);
+    }
+  },
+
+  searchPokemonByType: async (req,res,next) => {
+    const searchType = req.query.type;
+    try {
+      // Récupère notre méthode dataMapper pour trouver afficher les pokémons via leurs noms
+      const pokemonType = await dataMapper.getPokemonByType(searchType);
+      // On envois nos data à notre vue
+      res.render("pokemonType", { pokemonType });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(`An error occured with the database :\n${error.message}`);
     }
   }
 };

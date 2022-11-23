@@ -5,7 +5,6 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 8000;
 
-
 // Configuration du moteur de template EJS
 app.set("view engine", ("ejs"));
 app.set("views", ("./views"));
@@ -27,14 +26,12 @@ app.use(expressSession({
 // Appel du routeur
 app.use(router);
 
-
 // Apres le router, (ie. si la requête n'est pas interceptée et terminé par un des controllers du router), alors on passe au middleware de la 404
 app.use((req, res) => {
   res.status(404); // Mettre le status code à 404 // Version 'EXPRESS' de `res.statusCode = 404` du module 'http'
   res.render("404"); // On termine la requête par une page EJS
   // Pas besoin de next, on a pas mis de middleware après (si on en avait un qui nous interesse, pourquoi pas ! Mais là non)
 });
-
 
 app.listen(port, () => {
   console.log("Server app listening on port " + port);

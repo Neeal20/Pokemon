@@ -20,6 +20,10 @@ router.post("/auth", mainController.getPseudoSession, mainController.loginVerifi
 router.get("/signin", mainController.getPseudoSession, mainController.renderSignPage);
 
 router.post("/signin", mainController.getPseudoSession, mainController.loginPost);
+router.get("/search/pokemon/type", mainController.getPseudoSession, mainController.searchPokemonByType);
+
+router.get("/search/pokemon/name", mainController.getPseudoSession, mainController.searchPokemonByName);
+
 
 // Export du module router
 module.exports = router;

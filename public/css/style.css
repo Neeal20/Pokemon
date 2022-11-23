@@ -90,6 +90,30 @@ body {
     font-size: 14px;
 }
 
+/* Nav-Search */
+.nav__search {
+    width: 100%;
+    display: flex;
+}
+
+.nav__search--pokemon {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.nav__search--pokemon input {
+    padding: 0.4rem;
+    background-color: var(--color-nav);
+    border: none;
+    cursor: pointer;
+}
+.nav__search--pokemon input:first-child {
+    width: 13rem;
+    border-right: 3px solid var(--color-last);
+}
+
 /* ------------------------------- Home Page  */
 /* Container */
 main{

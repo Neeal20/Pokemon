@@ -1,8 +1,5 @@
 const client = require("./database");
 
-// Import du module bcrypt pour crypter les mdp
-const bcrypt = require("bcrypt");
-
 const dataMapper = {
   getAllPokemons: async () => {
     const result = await client.query("SELECT * FROM \"pokemons\" ORDER BY \"id\" ASC;");
@@ -31,7 +28,6 @@ const dataMapper = {
   },
 
   getSignInDatas: async (usersPseudo,usersPassword) => {
-
     const queryString = `
     INSERT INTO "users"(
       "pseudo",
@@ -51,22 +47,52 @@ const dataMapper = {
   },
 
   getLoginDatas : async (usersPseudo,usersPassword) => {
-    // const queryString = `
-    // SELECT * FROM "users"
-    // WHERE "pseudo" = $1 AND "password" = $2 IN
-    // VALUES ('$1'), ('$2')
-    // `;
-
     const queryString = `SELECT * FROM "users" WHERE "pseudo" = '${usersPseudo}' AND "password" = '${usersPassword}' `;
-
-    const values = [ usersPseudo, usersPassword ];
     const result = await client.query(queryString);
 
-    console.log(result.rows);
+    if(result.rows.length === 1) {
+      const user = result.rows[0];
+      return user;
+    } else {
+      return null;
+    }
+  },
 
-    return result;
+  getPokemonBySearch: async (searchPokemon) => {
+    const queryString = "SELECT * FROM pokemons WHERE  \"name\" ILIKE '%'|| $1 || '%'";
+    const values = [ searchPokemon ];
 
+    const result = await client.query(queryString, values);
+    console.log("Resultat: ", result.rows);
+
+    if(result.rows.length === 1) {
+      // on récupère la query dans une variable
+      const element = result.rows[0];
+      // Si on a bien une query qui correspond, on la renvoie au controller
+      return element;
+    } else {
+      // Sinon on renvoie null
+      return null;
+    }
+  },
+
+  getPokemonByType: async (searchType) => {
+    const queryString = `SELECT * FROM pokemons WHERE '${searchType}' ilike ANY(type)`;
+
+    const result = await client.query(queryString);
+    console.log("Resultat: ", result.rows);
+
+    if(result.rows) {
+      // on récupère la query dans une variable
+      const element = result.rows;
+      // Si on a bien une query qui correspond, on la renvoie au controller
+      return element;
+    } else {
+      // Sinon on renvoie null
+      return null;
+    }
   }
+
 };
 
 module.exports = dataMapper;
