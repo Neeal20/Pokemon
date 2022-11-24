@@ -104,16 +104,47 @@ body {
     margin-bottom: 1rem;
 }
 .nav__search--pokemon input {
-    padding: 0.4rem;
+    padding: 0.5rem;
     background-color: var(--color-nav);
     border: none;
-    cursor: pointer;
+    color: var(--color-title);
+    font-size: 0.7rem;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+.nav__search--pokemon input::placeholder {
+    color:  var(--color-title);
+    font-size: 0.7rem;
 }
 .nav__search--pokemon input:first-child {
     width: 13rem;
-    border-right: 3px solid var(--color-last);
 }
 
+#type {
+    width: 13rem;
+    background-color: var(--color-nav);
+    border: none;
+    color: var(--color-title);
+    justify-content: center;
+    padding: 0.325rem;
+}
+
+#type:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+.button__submit{
+    background-color: var(--color-nav);
+    padding: 0.4rem;
+    cursor: pointer;
+    border: none;
+    font-weight: 800;
+    border-left: 1px solid var(--color-third);
+    color: var(--color-last);
+}
 /* ------------------------------- Home Page  */
 /* Container */
 main{
@@ -221,7 +252,8 @@ a .container__pokedex--img {
 
 .container__pokedex__details {
     position: absolute;
-    color: var(--color-bg);
+    color: var(--color-title);
+    background-color: var(--color-bg);
     bottom: 3%;
     left: 11.5%;
     display: flex;
@@ -237,7 +269,7 @@ a .container__pokedex--img {
 .container__pokedex--type {
     padding: 0.7rem 0.5rem;
     line-height: 10%;
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     position: absolute;
     right: 10px;
     top: 10px;

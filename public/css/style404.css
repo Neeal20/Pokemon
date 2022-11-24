@@ -182,7 +182,8 @@ main{
 
 .container__pokedex__details {
     position: absolute;
-    color: var(--color-bg);
+    color: var(--color-white);
+    background-color: var(--color-bg);
     bottom: 3%;
     left: 11.5%;
     width: 76%;

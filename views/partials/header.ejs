@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="app.js" defer></script>
     <title>Pokédex</title>
 </head>
 <body>
-
     <header>
         <nav class="nav">
             <div class="nav__bar">
@@ -28,31 +29,5 @@
                 <h1 class="nav__bar--link title"><%= name %></h1>
             </div>
         </nav>
-            <form action="/search/pokemon/name" method="get">
-                <div class="nav__search--pokemon">
-                    <input type="text" name="name" id="name">
-                    <input type="submit" value="Chercher">
-                </div>
-            </form>
-            <form action="/search/pokemon/type" method="get">
-                <div class="nav__search--pokemon">
-                    <select name="type" id="type">
-                        <option value="Feu">Feu</option>
-                        <option value="Dragon">Dragon</option>
-                        <option value="Poison">Poison</option>
-                        <option value="Normal">Normal</option>
-                        <option value="Insecte">Insecte</option>
-                        <option value="Eau">Eau</option>
-                        <option value="Plante">Plante</option>
-                        <option value="Électrik">Électrik</option>
-                        <option value="Vol">Vol</option>
-                        <option value="Roche">Roche</option>
-                        <option value="Sol">Sol</option>
-                        <option value="Acier">Acier</option>
-                        <option value="Glace">Glace</option>
-                      </select>
-                      <input type="submit" value="Chercher">
-                </div>
-            </form>
     </header>
     

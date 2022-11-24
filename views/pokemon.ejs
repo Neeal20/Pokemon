@@ -1,4 +1,31 @@
 <%- include("partials/header") %> 
+<form action="/search/pokemon/name" method="get">
+    <div class="nav__search--pokemon">
+        <input type="text" name="name" id="name" placeholder="Chercher un Pokémon" value="<%= singlePokemon.name %>">
+        <button class="button__submit" type="submit"><i class="bi bi-search"></i></button>
+    </div>
+</form>
+<form action="/search/pokemon/type" method="get">
+    <div class="nav__search--pokemon">
+        <select name="type" id="type">
+            <option class="type" value="Type">Type</option>
+            <option class="type" value="Feu">Feu</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Poison">Poison</option>
+            <option value="Normal">Normal</option>
+            <option value="Insecte">Insecte</option>
+            <option value="Eau">Eau</option>
+            <option value="Plante">Plante</option>
+            <option value="Électrik">Électrik</option>
+            <option value="Vol">Vol</option>
+            <option value="Roche">Roche</option>
+            <option value="Sol">Sol</option>
+            <option value="Acier">Acier</option>
+            <option value="Glace">Glace</option>
+            </select>
+            <button class="button__submit" type="submit"><i class="bi bi-search"></i></button>
+    </div>
+</form>
 <section class="container__pokemon">
     <div class="container__image">
         <h1 class="container__image--title">#<%= singlePokemon.id %> <%= singlePokemon.name %></h1>

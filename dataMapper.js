@@ -27,7 +27,8 @@ const dataMapper = {
     }
   },
 
-  getSignInDatas: async (usersPseudo,usersPassword) => {
+  postSignInDatas: async (usersPseudo,usersPassword) => {
+    // Insérer dans la Db les informations de l'utilisateur
     const queryString = `
     INSERT INTO "users"(
       "pseudo",
@@ -36,25 +37,44 @@ const dataMapper = {
     VALUES ($1, $2)`;
 
     const values = [usersPseudo,usersPassword];
-    const result = (queryString, values);
+    const result = await client.query(queryString, values);
+    console.log(result);
 
+    // Si le résultat est valide
+    if(result) {
+      const user = result;
+      // On return le user
+      return user;
+    } else {
+      // Sinon null
+      return null;
+    }
+  },
+
+  getLoginDatas : async (usersPseudo,usersPassword) => {
+    // On regarde si l'utilisateur est inscrit et existe dans notre Db
+    const queryString = `SELECT * FROM "users" WHERE "pseudo" = '${usersPseudo}' AND "password" = '${usersPassword}' `;
+    const result = await client.query(queryString);
+
+    // Si il existe
     if(result.rows.length === 1) {
       const user = result.rows[0];
+      // On return le user
       return user;
     } else {
       return null;
     }
   },
 
-  getLoginDatas : async (usersPseudo,usersPassword) => {
-    const queryString = `SELECT * FROM "users" WHERE "pseudo" = '${usersPseudo}' AND "password" = '${usersPassword}' `;
-    const result = await client.query(queryString);
+  verifyUserInDb: async (usersPseudo) => {
+    const queryString = "SELECT EXISTS( SELECT * FROM users WHERE \"pseudo\" = $1)";
+    const values = [ usersPseudo ];
 
-    if(result.rows.length === 1) {
-      const user = result.rows[0];
-      return user;
-    } else {
-      return null;
+    const result = await client.query(queryString, values);
+    console.log("BLABLABLA", result.rows[0]);
+
+    if(result.rows === true) {
+      return;
     }
   },
 
@@ -63,7 +83,6 @@ const dataMapper = {
     const values = [ searchPokemon ];
 
     const result = await client.query(queryString, values);
-    console.log("Resultat: ", result.rows);
 
     if(result.rows.length === 1) {
       // on récupère la query dans une variable
@@ -80,7 +99,6 @@ const dataMapper = {
     const queryString = `SELECT * FROM pokemons WHERE '${searchType}' ilike ANY(type)`;
 
     const result = await client.query(queryString);
-    console.log("Resultat: ", result.rows);
 
     if(result.rows) {
       // on récupère la query dans une variable
