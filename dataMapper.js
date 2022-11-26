@@ -1,7 +1,9 @@
 const client = require("./database");
+const bcrypt = require("bcryptjs");
 
 const dataMapper = {
   getAllPokemons: async () => {
+    // Récupérer les datas de tous les pokemon de la Db
     const result = await client.query("SELECT * FROM \"pokemons\" ORDER BY \"id\" ASC;");
     const figurineList = result.rows;
 
@@ -36,8 +38,19 @@ const dataMapper = {
       )
     VALUES ($1, $2)`;
 
+    // Crypter le mot de passe par une chaîne de caractère aléatoire
+    let salt = await bcrypt.genSalt(10); // 10 rounds de 'hashage' de mot de passe
+    let hash = await bcrypt.hash(usersPassword, salt);
+    console.log(hash);
+
+    // On compare si notre chaîne de caractère genéré est = au mot de passe
+    // Via la "compare"
+    let compare = await bcrypt.compare(usersPassword,hash);
+    console.log(compare);
+
     const values = [usersPseudo,usersPassword];
     const result = await client.query(queryString, values);
+    // Si la comparaison est bonne, cela renverra true, sinon => false
     console.log(result);
 
     // Si le résultat est valide

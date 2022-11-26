@@ -13,7 +13,7 @@ const loginController = {
     }
   },
 
-  renderSignPage: (req,res,next) => {
+  renderSignPage: (req,res) => {
     try {
       // On renvoi notre page inscription
       res.render("signin");
@@ -24,7 +24,7 @@ const loginController = {
     }
   },
 
-  loginPost: async (req,res,next) => {
+  loginPost: async (req,res) => {
     try {
       // On récupère le pseudo et le password du user
       const usersPseudo = req.body.pseudo;
@@ -36,6 +36,7 @@ const loginController = {
       } // Si l'identifiant est valide
       else if (usersPseudo && usersPassword) {
         const postUser = await dataMapper.postSignInDatas(usersPseudo,usersPassword);
+        console.log(postUser);
       }
     } catch (error) {
       console.log(error);

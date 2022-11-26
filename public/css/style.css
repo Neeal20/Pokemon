@@ -4,6 +4,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 :root {
     --color-bg : #202023;
     --color-nav: #0075BE;
@@ -12,6 +13,7 @@
     --color-last : #FFCC00;
     --color-white : #fff;
 }
+
 body {
     height: 100vh;
     background-color: var(--color-third);

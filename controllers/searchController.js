@@ -21,7 +21,7 @@ const searchController = {
     }
   },
 
-  searchPokemonByType: async (req,res,next) => {
+  searchPokemonByType: async (req,res) => {
     const searchType = req.query.type;
     console.log(searchType);
     try {
