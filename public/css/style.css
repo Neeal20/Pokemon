@@ -89,7 +89,9 @@ body {
     justify-content: center;
     text-align: center;
     align-items: center;
-    font-size: 14px;
+    background-color: var(--color-third);
+    border: none;
+    font-size: 0.7rem;
 }
 
 /* Nav-Search */

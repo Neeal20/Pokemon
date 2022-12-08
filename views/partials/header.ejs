@@ -23,12 +23,13 @@
                             <a href="/"><li class="nav__bar--link">Accueil</li></a>
                             <a href="/pokedex"><li class="nav__bar--link">Pokédex</li></a>
                             <a href="/login"><li class="nav__bar--link">Login</li></a>
+                            <a href="/favoris"><li class="nav__bar--link">Favoris</li></a>
                         </ul>
                     </div>
                 </div>
                 <h1 class="nav__bar--link title"><%= name %></h1>
-                <form action="/logout" method="post">
-                    <h1 class="nav__bar--link title">Se déconnecter</h1>
+                <form action="/logout" method="get">
+                    <button type="submit" class="nav__bar--link title">Se déconnecter</h1>
                 </form>
             </div>
         </nav>

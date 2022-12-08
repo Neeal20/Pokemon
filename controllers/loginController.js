@@ -71,6 +71,21 @@ const loginController = {
     }
   },
 
+  logoutSession: (req,res,next) => {
+    try {
+      if(req.session) {
+        req.session.destroy();
+      }
+      // On renvoi notre page login
+      res.redirect("/");
+    } catch (error) {
+      console.error;
+      // Sinon, on renvoie une erreur
+      res.status(500).send(`loginController: ${error.message}`);
+    }
+    next();
+  },
+
   getPseudoSession: (req,res,next) => {
     // Middleware pour récupérer le pseudo en fonction de le session de l'utilisateur
     try {

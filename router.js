@@ -5,6 +5,7 @@ const express = require("express");
 const mainController = require("./controllers/mainController");
 const loginController = require("./controllers/loginController");
 const searchController = require("./controllers/searchController");
+const bookmarksController = require("./controllers/bookmarkController");
 
 // Création d'un router
 const router = express.Router();
@@ -28,6 +29,9 @@ router.post("/auth", loginController.getPseudoSession, loginController.loginVeri
 // Afficher la page login
 router.get("/signin", loginController.getPseudoSession, loginController.renderSignPage);
 
+// Déconnection de l'utilisateur
+router.get("/logout", loginController.getPseudoSession, loginController.logoutSession);
+
 // Inscription utilisateur dans la Db
 router.post("/signin", loginController.getPseudoSession, loginController.loginPost);
 
@@ -36,6 +40,9 @@ router.get("/search/pokemon/type", loginController.getPseudoSession, searchContr
 
 // Fonction de recherche de pokémon par nom
 router.get("/search/pokemon/name", loginController.getPseudoSession, searchController.searchPokemonByName);
+
+// Affichage de la page des favoris
+router.get("/favoris", loginController.getPseudoSession, bookmarksController.renderBookmarks);
 
 // Export du module router
 module.exports = router;
