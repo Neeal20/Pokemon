@@ -9,29 +9,57 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="app.js" defer></script>
     <title>Pokédex</title>
 </head>
 <body>
     <header>
-        <nav class="nav">
-            <div class="nav__bar">
-                <div class="nav__bar--first">
-                    <a href="/"><h1 class="nav__bar--title">Pokédex</h1></a>
-                    <div class="nav__bar--second">
-                        <ul class="nav__bar--links">
-                            <a href="/"><li class="nav__bar--link">Accueil</li></a>
-                            <a href="/pokedex"><li class="nav__bar--link">Pokédex</li></a>
-                            <a href="/login"><li class="nav__bar--link">Login</li></a>
-                            <a href="/favoris"><li class="nav__bar--link">Favoris</li></a>
-                        </ul>
-                    </div>
-                </div>
-                <h1 class="nav__bar--link title"><%= name %></h1>
-                <form action="/logout" method="get">
-                    <button type="submit" class="nav__bar--link title">Se déconnecter</h1>
-                </form>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/">Pokédex</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/pokedex">Pokédex</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login" >Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/favoris" >Favoris</a>
+                </li>
+              </ul>
+              <form action="/search/pokemon/name" method="get" class="form-inline my-2 my-lg-0">
+                <input name="name" id="name" class="form-control mr-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+              <form action="/search/pokemon/type" method="get" class="form-inline my-2 my-lg-0">
+                <select name="type" class="form-control mr-sm-2">
+                    <option class="type" value="Type">Type</option>
+                    <option class="type" value="Feu">Feu</option>
+                    <option value="Dragon">Dragon</option>
+                    <option value="Poison">Poison</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Insecte">Insecte</option>
+                    <option value="Eau">Eau</option>
+                    <option value="Plante">Plante</option>
+                    <option value="Électrik">Électrik</option>
+                    <option value="Vol">Vol</option>
+                    <option value="Roche">Roche</option>
+                    <option value="Sol">Sol</option>
+                    <option value="Acier">Acier</option>
+                    <option value="Glace">Glace</option>
+                    </select>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
             </div>
-        </nav>
+            </nav>
+            
     </header>
     

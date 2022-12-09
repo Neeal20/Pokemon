@@ -3,7 +3,6 @@ const router = require("./router");
 const expressSession = require("express-session");
 require("dotenv").config();
 const app = express();
-const bcrypt = require("bcryptjs");
 const port = process.env.PORT || 8000;
 
 
