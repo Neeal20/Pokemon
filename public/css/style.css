@@ -303,6 +303,10 @@ a .container__pokedex--img {
     background-color: var(--color-bg);
 }
 
+.container__image--title{
+    color: var(--color-nav);
+}
+
 /* Form input */
 
 .form {
@@ -342,6 +346,7 @@ a .container__pokedex--img {
     width: 105%;
     border-radius: 0.25rem;
     margin-top: 1rem;
+    color: var(--color-nav);
     border: 5px solid var(--color-bg);
     justify-content: center;
 }
@@ -379,6 +384,10 @@ hr{
     border-radius: 0.25rem;
     border: 5px solid var(--color-bg);
     padding: 1rem;
+}
+
+.container__right--title {
+    color: var(--color-nav);
 }
 
 .container__pokemon--change {
@@ -524,6 +533,7 @@ hr{
         padding: 1rem;
     }
 
+
     .container__image {
         margin: auto;
         display: flex;
@@ -535,12 +545,19 @@ hr{
         /* margin-right: 0rem */
     }
 
+    .container__image--title {
+        font-size: 1.4rem;
+        color: var(--color-nav);
+    }
+
     .container__pokemon--image {
         width: 100%;
     }
 
     .container__right--title {
         margin-top: 1rem;
+        font-size: 1.4rem;
+        color: var(--color-nav);
     }
 
     .container__right {
