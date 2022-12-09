@@ -1,8 +1,10 @@
 // 1. require le module
 const pg = require("pg");
 
+require("dotenv").config();
+
 // 2. Créer un client
-const client = new pg.Client("postgresql://pokemon:pokemon@localhost:5432/pokemon");
+const client = new pg.Client(process.env.PG_URL);
 
 // 3. Connecter le client
 client.connect();
