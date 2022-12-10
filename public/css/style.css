@@ -176,7 +176,7 @@ main{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 101%;
+    height: 110%;
 }
 
 .container__principal--title{
@@ -636,4 +636,7 @@ hr{
     .container__pokedex--form {
         width: 80%;
     }
+
+    
 }
+
