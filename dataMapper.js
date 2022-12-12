@@ -43,12 +43,7 @@ const dataMapper = {
     let hash = await bcrypt.hash(usersPassword, salt);
     console.log(hash);
 
-    // On compare si notre chaîne de caractère genéré est = au mot de passe
-    // Via la "compare"
-    let compare = await bcrypt.compare(usersPassword,hash);
-    console.log(compare);
-
-    const values = [usersPseudo,usersPassword];
+    const values = [usersPseudo,hash];
     const result = await client.query(queryString, values);
     // Si la comparaison est bonne, cela renverra true, sinon => false
     console.log(result);
