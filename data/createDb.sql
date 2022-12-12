@@ -1,4 +1,4 @@
-CREATE TABLE "pokemons"(
+CREATE TABLE "pokemon"(
   "id" SERIAL PRIMARY KEY,
   "name" varchar(50),
   "pv" INT,
