@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const dataMapper = {
   getAllPokemons: async () => {
     // Récupérer les datas de tous les pokemon de la Db
-    const result = await client.query("SELECT * FROM \"pokemons\" ORDER BY \"id\" ASC;");
+    const result = await client.query("SELECT * FROM \"pokemon\" ORDER BY \"id\" ASC;");
     const figurineList = result.rows;
 
     // On renvoie avec la méthode
@@ -12,7 +12,7 @@ const dataMapper = {
   },
 
   getSinglePokemon: async (targetId) => {
-    const queryString = "SELECT * FROM pokemons WHERE id=$1";
+    const queryString = "SELECT * FROM pokemon WHERE id=$1";
     const values = [ targetId];
 
     const result = await client.query(queryString, values);
@@ -92,7 +92,7 @@ const dataMapper = {
   },
 
   getPokemonBySearch: async (searchPokemon) => {
-    const queryString = "SELECT * FROM pokemons WHERE  \"name\" ILIKE '%'|| $1 || '%'";
+    const queryString = "SELECT * FROM pokemon WHERE  \"name\" ILIKE '%'|| $1 || '%'";
     const values = [ searchPokemon ];
 
     const result = await client.query(queryString, values);
@@ -109,7 +109,7 @@ const dataMapper = {
   },
 
   getPokemonByType: async (searchType) => {
-    const queryString = `SELECT * FROM pokemons WHERE '${searchType}' ilike ANY(type)`;
+    const queryString = `SELECT * FROM pokemon WHERE '${searchType}' ilike ANY(type)`;
 
     const result = await client.query(queryString);
 
