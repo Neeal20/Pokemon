@@ -33,7 +33,7 @@ const dataMapper = {
     // Insérer dans la Db les informations de l'utilisateur
     const queryString = `
     INSERT INTO "users"(
-      "pseudo",
+      "email",
       "password"
       )
     VALUES ($1, $2)`;
@@ -66,7 +66,7 @@ const dataMapper = {
 
   getLoginDatas : async (usersPseudo,usersPassword) => {
     // On regarde si l'utilisateur est inscrit et existe dans notre Db
-    const queryString = `SELECT * FROM "users" WHERE "pseudo" = '${usersPseudo}' AND "password" = '${usersPassword}' `;
+    const queryString = `SELECT * FROM "users" WHERE "email" = '${usersPseudo}' AND "password" = '${usersPassword}' `;
     const result = await client.query(queryString);
 
     // Si il existe
@@ -80,7 +80,7 @@ const dataMapper = {
   },
 
   verifyUserInDb: async (usersPseudo) => {
-    const queryString = "SELECT EXISTS( SELECT * FROM users WHERE \"pseudo\" = $1)";
+    const queryString = "SELECT EXISTS( SELECT * FROM users WHERE \"email\" = $1)";
     const values = [ usersPseudo ];
 
     const result = await client.query(queryString, values);
